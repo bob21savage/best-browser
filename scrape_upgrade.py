@@ -735,7 +735,7 @@ class AdvancedContentScraper:
         
         # Extract embedded content
         for content_type, results in processed_results.items():
-            if content_type in ['web', 'images', 'videos', 'news']:
+            if (content_type in ['web', 'images', 'videos', 'news']):
                 embedded_results = await self._extract_embedded_content(results, content_type)
                 processed_results[content_type].extend(embedded_results)
         
@@ -1150,7 +1150,7 @@ class VideoSearchCrawler:
         }
         for engine in self.search_engines:
             self.progress['current_engine'] = engine
-            search_url = f'{engine}{self.main_topic}'
+            search_url = f'{engine}{quote(self.main_topic)}'
             logger.info(f"Searching URL: {search_url}")
             try:
                 html_content = await self.fetch_search_results(search_url)
