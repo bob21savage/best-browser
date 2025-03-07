@@ -4,7 +4,12 @@ tool.poetry
 name = "advanced-scraper"
 version = "1.0.0"
 description = "An advanced web scraper with AI capabilities and real-time updates"
-authors = ["Your Name <your.email@example.com>"]
+
+[
+tool.poetry.authors
+]
+name = "Your Name"
+email = "your.email@example.com"
 
 [build-system]
 requires = ["setuptools>=64.0.0", "wheel"]
