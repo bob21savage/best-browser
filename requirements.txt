@@ -4,3 +4,4 @@ python-dotenv
 html2text
 quart
 hypercorn
+requests
