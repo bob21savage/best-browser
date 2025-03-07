@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "scrape_updated.py"
+        "dest": "scrape_upgrade.py"
       }
     ]
   }
