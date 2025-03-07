@@ -1277,7 +1277,7 @@ class VideoSearchCrawler:
 
 async def run_app(app, port):
     config = Config()
-    config.bind = [f"127.0.0.1:{port}"]
+    config.bind = [f"0.0.0.0:{port}"]  # Bind to 0.0.0.0 to allow external access
     await serve(app, config)  # Await the serve function directly
 
 async def wait_for_media_processing():
