@@ -1,0 +1,17 @@
+MANIFEST.in
+README.MD
+README.md
+pyproject.toml
+setup.py
+./advanced_scraper/__init__.py
+advanced_scraper/__init__.py
+advanced_scraper.egg-info/PKG-INFO
+advanced_scraper.egg-info/SOURCES.txt
+advanced_scraper.egg-info/dependency_links.txt
+advanced_scraper.egg-info/entry_points.txt
+advanced_scraper.egg-info/requires.txt
+advanced_scraper.egg-info/top_level.txt
+static/js/search.js
+templates/index.html
+templates/scan_results.html
+templates/search_template.html

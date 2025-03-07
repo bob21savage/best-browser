@@ -1,0 +1,2 @@
+[console_scripts]
+advanced-scraper = advanced_scraper:main

@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "advanced-scraper"
+version = "1.0.0"
+description = "An advanced web scraper with AI capabilities and real-time updates"
+readme = "README.MD"  # Ensure this filename is correct (case-sensitive)
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+    'Flask',
+    'Flask-SQLAlchemy',
+    'Flask-Login',
+    'Flask-WTF',
+    'Werkzeug',
+    'aiohttp',
+    'requests>=2.25.1',
+    'beautifulsoup4',  # For parsing HTML
+    'lxml',           # For parsing HTML and XML
+    'matplotlib',      # For data visualization
+    'seaborn',        # For statistical data visualization
+    'yt-dlp',         # For downloading videos
+    'schedule',       # For scheduling tasks
+    'asyncio',        # For asynchronous programming
+    'tweepy',         # For Twitter API access
+    'python-dotenv',
+    'httpx',
+    'quart-auth',
+    'quart',
+    'hypercorn',
+    'scrapy',
+    'pandas',
+    'numpy',
+    'scikit-learn',
+    'tensorflow',
+    'aiohttp',
+    'beautifulsoup4',
+    'lxml',
+    'matplotlib',
+    'seaborn',
+    'yt-dlp',
+    'schedule',
+    'asyncio',
+    'tweepy',
+    'python-dotenv',
+    'httpx',
+    'quart-auth',
+    'quart',
+    'hypercorn',
+    'scrapy',
+    'pandas',
+    'numpy',
+    'scikit-learn',
+    'tensorflow',
+    'keras',
+    'transformers'  
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
+
+[project.scripts]
+advanced-scraper = "advanced_scraper:main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+packages = ["advanced_scraper"]
+
+[tool.setuptools.package-data]
+"*" = ["static/**/*", "templates/**/*"]

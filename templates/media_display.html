@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .media-section {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .media-item {
+            margin: 10px 0;
+        }
+        video, audio {
+            width: 100%;
+            max-width: 600px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Media Display</h1>
+
+    <div id="media-grid">
+        <h2>Media Results</h2>
+        <div class="media-section" id="videos">
+            <h2>Videos</h2>
+            {% for video in videos %}
+            <div class="media-item">
+                <video controls>
+                    <source src="{{ video }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="media-section" id="audio">
+            <h2>Audio</h2>
+            {% for audio in audios %}
+            <div class="media-item">
+                <audio controls>
+                    <source src="{{ audio }}" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="media-section" id="images">
+            <h2>Images</h2>
+            {% for image in images %}
+            <div class="media-item">
+                <img src="{{ image }}" alt="Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        async function fetchMedia() {
+            try {
+                const response = await fetch('/fetch_media');
+                const data = await response.json();
+
+                // Update the grid with videos
+                const videoDiv = document.getElementById('videos');
+                videoDiv.innerHTML = '<h2>Videos</h2>' + data.videos.map(video => `<div class="media-item"><video controls><source src="${video}" type="video/mp4">Your browser does not support the video tag.</video></div>`).join('');
+
+                // Update the grid with audio
+                const audioDiv = document.getElementById('audio');
+                audioDiv.innerHTML = '<h2>Audio</h2>' + data.audios.map(audio => `<div class="media-item"><audio controls><source src="${audio}" type="audio/mpeg">Your browser does not support the audio tag.</audio></div>`).join('');
+
+                // Update the grid with images
+                const imageDiv = document.getElementById('images');
+                imageDiv.innerHTML = '<h2>Images</h2>' + data.images.map(image => `<div class="media-item"><img src="${image}" alt="Image"></div>`).join('');
+            } catch (error) {
+                console.error('Error fetching media:', error);
+            }
+        }
+
+        // Call fetchMedia every 5 seconds
+        setInterval(fetchMedia, 5000);
+        fetchMedia(); // Initial call
+    </script>
+
+</body>
+</html>
