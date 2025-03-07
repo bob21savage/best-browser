@@ -1,0 +1,6 @@
+beautifulsoup4
+aiohttp
+python-dotenv
+html2text
+quart
+hypercorn
