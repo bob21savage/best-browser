@@ -89,7 +89,7 @@ dev = [
 ]
 
 [project.scripts]
-advanced-scraper = "advanced_scraper:main"
+advanced-scraper = "scrape_updated.py"
 
 [tool.setuptools]
 package-dir = {"" = "."}
