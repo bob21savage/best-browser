@@ -7,40 +7,34 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #f5f5f5;
         }
-        h1 {
-            text-align: center;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .media-section {
-            margin: 20px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #fff;
+            margin-bottom: 30px;
+        }
+        .media-title {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
         .media-item {
-            margin: 10px 0;
+            margin-bottom: 10px;
         }
-        video, audio {
-            width: 100%;
-            max-width: 600px;
-        }
-        img {
+        .media-item img, .media-item video, .media-item audio {
             max-width: 100%;
             height: auto;
         }
     </style>
 </head>
 <body>
-
-    <h1>Media Display</h1>
-
-    <div id="media-grid">
-        <h2>Media Results</h2>
-        <div class="media-section" id="videos">
-            <h2>Videos</h2>
+    <div class="container">
+        <div class="media-section">
+            <div class="media-title">Videos</div>
             {% for video in videos %}
             <div class="media-item">
                 <video controls>
@@ -50,21 +44,19 @@
             </div>
             {% endfor %}
         </div>
-
-        <div class="media-section" id="audio">
-            <h2>Audio</h2>
+        <div class="media-section">
+            <div class="media-title">Audios</div>
             {% for audio in audios %}
             <div class="media-item">
                 <audio controls>
                     <source src="{{ audio }}" type="audio/mpeg">
-                    Your browser does not support the audio tag.
+                    Your browser does not support the audio element.
                 </audio>
             </div>
             {% endfor %}
         </div>
-
-        <div class="media-section" id="images">
-            <h2>Images</h2>
+        <div class="media-section">
+            <div class="media-title">Images</div>
             {% for image in images %}
             <div class="media-item">
                 <img src="{{ image }}" alt="Image">

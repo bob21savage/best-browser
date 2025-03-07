@@ -1141,7 +1141,15 @@ class VideoSearchCrawler:
         
     async def collect_results(self):
         logger.info(f"Starting search for: {self.main_topic}")
+        self.search_completed = False
+        self.search_results = []
+        self.progress = {
+            'current_engine': '',
+            'current': 0,
+            'total': len(self.search_engines)
+        }
         for engine in self.search_engines:
+            self.progress['current_engine'] = engine
             search_url = f'{engine}{self.main_topic}'
             logger.info(f"Searching URL: {search_url}")
             try:
@@ -1162,7 +1170,7 @@ class VideoSearchCrawler:
                 # Add extracted results to the main results list
                 self.search_results.extend(results)
                 logger.info(f"Total results after {engine}: {len(self.search_results)}")
-            
+            self.progress['current'] += 1
             await asyncio.sleep(3)  # Increased delay between requests
         self.search_completed = True
 
@@ -1281,9 +1289,10 @@ async def run_app(app, port):
     await serve(app, config)  # Await the serve function directly
 
 async def wait_for_media_processing():
-    # Implement logic to wait for media processing to complete
-    # This could involve checking flags or waiting for specific events
-    pass
+    """Wait for media processing to complete."""
+    while not app.crawler.search_completed:
+        await asyncio.sleep(1)  # Check every second
+    logger.info("Media processing completed.")
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
